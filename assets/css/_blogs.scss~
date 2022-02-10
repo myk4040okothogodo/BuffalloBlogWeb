@@ -1,0 +1,17 @@
+.cards {
+  display: flex;
+
+  .card {
+    width: 32%;
+    margin-right: 1%;
+    padding: 20px;
+  }
+}
+
+.ck-editor__editable {
+  min-height: 500px;
+}
+
+.blog-list .list-group-item {
+  border: none;
+}

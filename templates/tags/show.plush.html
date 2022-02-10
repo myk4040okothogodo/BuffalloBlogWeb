@@ -1,1 +1,7 @@
 <h1>Tags#Show</h1>
+
+<ul>
+  <%= for (b) in tag.RelatedBlogs { %>
+  <li><%=linkTo(b, {body: b.Title}) %></li>
+  <% } %>
+</ul>

@@ -14,7 +14,7 @@ func TagsShow(c buffalo.Context) error {
   tag := models.Tag{}
   tag_id := c.Param("id")
 
-  err := tx.Find(&tag, tag_id)
+  err := tx.Eager().Find(&tag, tag_id)
   if err != nil {
     c.Flash().Add("warning", "Error loading tage.")
     c.Redirect(301, "/")

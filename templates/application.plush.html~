@@ -3,29 +3,26 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <title>Learn Buffalo in Go</title>
+    <title>BUffalo-Gril</title>
     <%= stylesheetTag("application.css") %>
     <meta name="csrf-param" content="authenticity_token" />
     <meta name="csrf-token" content="<%= authenticity_token %>" />
-    <link rel="icon" href="<%= assetPath("images/star_favicon.ico") %>">
+    <link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
   </head>
   <body>
-
-    <%= contentOf("pre_header") { %>
-    <% } %>
-
-    <%= partial("partials/header.html") %>
-
-    <div class="messages">
-      Messages content
+    <div class="header">
+        Header Content
     </div>
-
+    <div class="messages">
+        Messages content
+    </div>
     <div class="container">
       <%= partial("flash.html") %>
       <%= yield %>
     </div>
-
-    <%= partial("partials/footer.html") %>
+    <div class ="footer">
+      Footer content
+    </div>
 
     <%= javascriptTag("application.js") %>
   </body>
