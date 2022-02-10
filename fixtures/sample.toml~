@@ -30,7 +30,3 @@ name = "lots of widgets"
       created_at = "<%= now() %>"
       updated_at = "<%= now() %>"
 
-
-
-
-

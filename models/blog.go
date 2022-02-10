@@ -4,59 +4,56 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/gobuffalo/pop/v5"
+	"github.com/gobuffalo/pop/v6"
 	"github.com/gobuffalo/validate/v3"
 	"github.com/gobuffalo/validate/v3/validators"
 	"github.com/gofrs/uuid"
 )
 
-// Address is used by pop to map your addresses database table to your go code.
-type Address struct {
+// Blog is used by pop to map your blogs database table to your go code.
+type Blog struct {
 	ID        uuid.UUID `json:"id" db:"id"`
-	Street    string    `json:"street" db:"street"`
-	City      string    `json:"city" db:"city"`
-	State     string    `json:"state" db:"state"`
-	Zip       string    `json:"zip" db:"zip"`
+	Title     string    `json:"title" db:"title"`
+	Body      string    `json:"body" db:"body"`
 	UserID    uuid.UUID `db:"user_id"`
 	User      *User     `belongs_to:"user"`
+	BlogTags  Tags      `many_to_many:"blogs_tags"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 }
 
 // String is not required by pop and may be deleted
-func (a Address) String() string {
-	ja, _ := json.Marshal(a)
-	return string(ja)
+func (b Blog) String() string {
+	jb, _ := json.Marshal(b)
+	return string(jb)
 }
 
-// Addresses is not required by pop and may be deleted
-type Addresses []Address
+// Blogs is not required by pop and may be deleted
+type Blogs []Blog
 
 // String is not required by pop and may be deleted
-func (a Addresses) String() string {
-	ja, _ := json.Marshal(a)
-	return string(ja)
+func (b Blogs) String() string {
+	jb, _ := json.Marshal(b)
+	return string(jb)
 }
 
 // Validate gets run every time you call a "pop.Validate*" (pop.ValidateAndSave, pop.ValidateAndCreate, pop.ValidateAndUpdate) method.
 // This method is not required and may be deleted.
-func (a *Address) Validate(tx *pop.Connection) (*validate.Errors, error) {
+func (b *Blog) Validate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.Validate(
-		&validators.StringIsPresent{Field: a.Street, Name: "Street"},
-		&validators.StringIsPresent{Field: a.City, Name: "City"},
-		&validators.StringIsPresent{Field: a.State, Name: "State"},
-		&validators.StringIsPresent{Field: a.Zip, Name: "Zip"},
+		&validators.StringIsPresent{Field: b.Title, Name: "Title"},
+		&validators.StringIsPresent{Field: b.Body, Name: "Body"},
 	), nil
 }
 
 // ValidateCreate gets run every time you call "pop.ValidateAndCreate" method.
 // This method is not required and may be deleted.
-func (a *Address) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
+func (b *Blog) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
 
 // ValidateUpdate gets run every time you call "pop.ValidateAndUpdate" method.
 // This method is not required and may be deleted.
-func (a *Address) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
+func (b *Blog) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
