@@ -1,6 +1,8 @@
 package actions
 
 import (
+  "fmt"
+  "log"
 	"net/http"
   "models_demo/models"
 	"github.com/gobuffalo/buffalo"
@@ -19,7 +21,7 @@ func BlogsIndex(c buffalo.Context) error {
     c.Redirect(307, "/")
   }
   c.Set("blogs", blogs)
-  return c.Render(http.StatusOk, r.HTML("blogs/index"))
+  return c.Render(http.StatusOK, r.HTML("blogs/index.html"))
 
 }
 
@@ -55,11 +57,11 @@ func BlogsShow(c buffalo.Context) error {
 func BlogsCreate (c buffalo.Context) error {
   b := models.Blog{}
   c.Set("blog", b)
-  return c.Render(http.StatusOK, r.HTML("blogs/create.html"))
+  return c.Render(http.StatusOK, r.HTML("blogs/create.html", "admin.html"))
 
 }
 
-func BlogNew (c  buffalo.Context) error {
+func BlogsNew (c  buffalo.Context) error {
   tx := c.Value("tx").(*pop.Connection)
   b := &models.Blog{}
   err := c.Bind(b)

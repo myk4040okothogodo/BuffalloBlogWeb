@@ -10,6 +10,7 @@ require (
 	github.com/gobuffalo/mw-forcessl v0.0.0-20200131175327-94b2bd771862
 	github.com/gobuffalo/mw-i18n/v2 v2.0.1
 	github.com/gobuffalo/mw-paramlogger v1.0.0
+	github.com/gobuffalo/pop/v5 v5.3.4
 	github.com/gobuffalo/pop/v6 v6.0.1
 	github.com/gobuffalo/suite/v4 v4.0.2
 	github.com/gobuffalo/validate/v3 v3.3.1
@@ -40,7 +41,6 @@ require (
 	github.com/gobuffalo/nulls v0.4.1 // indirect
 	github.com/gobuffalo/packd v1.0.1 // indirect
 	github.com/gobuffalo/plush/v4 v4.1.9 // indirect
-	github.com/gobuffalo/pop/v5 v5.3.4 // indirect
 	github.com/gobuffalo/tags/v3 v3.1.2 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
